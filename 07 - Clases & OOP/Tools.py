@@ -3,11 +3,15 @@ class Tools():
         self.lista = lista_números
 
     def num_primo(self):
+        result = []
         for i in self.lista:
             if (self.__num_primo(i)):
                 print('El elemento', i, 'SI es un numero primo')
+                result.append(True)
             else:
                 print('El elemento', i, 'NO es un numero primo')
+                result.append(False)
+        return result
 
     def __num_primo (self, numero) -> int:  # __name se refiere a un método privado, solo se usa dentro de la clase
         for i in range(2, numero):
@@ -33,8 +37,11 @@ class Tools():
 
 
     def trans_temperature(self, origen, destino):
+        result_destino = []
         for i in self.lista:
-            self.__trans_temperature(i, origen, destino)
+            result = self.__trans_temperature(i, origen, destino)
+            result_destino.append(result)
+        return result_destino
 
     def __trans_temperature (self, value, unit_int, unit_out):
         # transformation functions
@@ -66,19 +73,24 @@ class Tools():
 
         elif unit_int == 'C':
             if unit_out == 'K':
-                print('{}°C = {:.2f}°K'.format(value, C_K(value)))
+                return('{}°C = {:.1f}°K'.format(value, C_K(value)))
             elif unit_out == 'F':
-                print('{}°C = {:.2f}F'.format(value, C_F(value)))
+                return('{}°C = {:.1f}F'.format(value, C_F(value)))
             else:
-                print('{}°C = {}°C'.format(value, value))
+                return('{}°C = {}°C'.format(value, value))
         else: 
             print("La opción seleccionada es incorrecta")
 
 
 
     def factorial (self):
+        result_factorial = []
         for i in self.lista:
-            print('el factorial de', i, 'es:', self.__factorial(i))
+            result = self.__factorial(i)
+            print('el factorial de', i, 'es:', result)
+            result_factorial.append(result)
+        return result_factorial
+
 
     def __factorial (self, valor) -> int:
         if valor < 0:
